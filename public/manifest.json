@@ -1,0 +1,20 @@
+{
+  "name": "SARA Guest",
+  "short_name": "SARA Guest",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0666EB",
+  "theme_color": "#0666EB",
+  "icons": [
+    {
+      "src": "sara-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "sara-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
