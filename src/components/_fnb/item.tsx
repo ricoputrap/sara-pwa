@@ -1,5 +1,6 @@
 import { CircleMinus, CirclePlus } from "lucide-react"
 import { Button } from '../ui/button';
+import { cn } from "@/lib/utils";
 
 interface Props {
   name: string;
@@ -32,7 +33,7 @@ export default function Item({
       <p className="font-medium text-sm">${price}</p>
       <div className="flex-1 flex items-end">
         {quantity > 0 ? (
-          <div className="flex items-center justify-center gap-x-5 w-full">
+          <div className="h-9 flex items-center justify-center gap-x-5 w-full">
             <CircleMinus size={20} onClick={onRemove} className="cursor-pointer" />
             {quantity}
             <CirclePlus size={20} onClick={onAdd} className="cursor-pointer" />
@@ -41,7 +42,7 @@ export default function Item({
           <Button
             size="sm"
             variant="outline"
-            className="w-full border-green-500 text-green-500"
+            className="w-full border-green-600 text-green-600"
             onClick={onAdd}
           >
             Add

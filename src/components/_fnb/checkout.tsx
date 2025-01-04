@@ -13,7 +13,7 @@ export default function Checkout() {
 
   return (
     <div className="w-full border-t px-4 py-3 bg-white fixed bottom-0">
-      <Button className="w-full flex justify-between">
+      <Button className="w-full flex justify-between bg-green-600">
         <p className="font-medium">{totalItemsLabel}</p>
         <p>${totalPrice.toFixed(2)}</p>
       </Button>
