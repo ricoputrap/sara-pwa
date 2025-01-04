@@ -1,3 +1,4 @@
+import FoodAndBeverage from '@/components/_fnb'
 import BaseLayout from '@/layouts/base'
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -13,7 +14,7 @@ function RouteComponent() {
       prevPath='/home'
       hideBottomNav
     >
-      Food & Beverage
+      <FoodAndBeverage />
     </BaseLayout>
   )
 }

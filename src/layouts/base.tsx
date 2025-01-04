@@ -25,7 +25,7 @@ export default function BaseLayout({
     <>
       {/* Header */}
       {hideHeader ? null : (
-        <header className="fixed top-0 px-5 flex items-center gap-x-3 w-full h-14 shadow-md">
+        <header className="bg-white fixed top-0 px-5 flex items-center gap-x-3 w-full h-14 shadow-md">
           {prevPath ? (
             <Link to={prevPath}>
               <ArrowLeft size={24} />
@@ -36,7 +36,10 @@ export default function BaseLayout({
       )}
 
       {/* Main Content */}
-      <main className={cn({ "pt-14": !hideHeader })}>
+      <main className={cn({
+        "pt-14": !hideHeader,
+        "h-screen": true
+      })}>
         {children}
       </main>
 

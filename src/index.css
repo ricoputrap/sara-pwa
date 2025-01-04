@@ -9,7 +9,6 @@
 body {
   background: var(--background);
   font-family: "Basier Circle";
-  @apply max-h-screen overflow-hidden;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
