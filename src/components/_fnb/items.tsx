@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Items({ title, items }: Props) {
-  const { orderItems, addItem, removeItem } = useFoodBeverageStore();
+  const { orderItems } = useFoodBeverageStore();
 
   const getQuantity = (id: number) => {
     const item = orderItems.find((item) => item.id == id);
@@ -25,18 +25,11 @@ export default function Items({ title, items }: Props) {
         {items.map((item) => (
           <Item
             key={item.id}
+            id={item.id}
             name={item.name}
             picURL={item.url}
             price={item.price}
             quantity={getQuantity(item.id)}
-            onAdd={() => addItem({
-              id: item.id,
-              name: item.name,
-              price: item.price,
-              url: item.url,
-              quantity: 1
-            })}
-            onRemove={() => removeItem(item.id)}
           />
         ))}
       </div>

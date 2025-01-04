@@ -1,24 +1,39 @@
 import { CircleMinus, CirclePlus } from "lucide-react"
 import { Button } from '../ui/button';
-import { cn } from "@/lib/utils";
+import React from "react";
+import useFoodBeverageStore from "@/stores/fnb-store";
 
 interface Props {
+  id: number;
   name: string;
   picURL: string;
   price: number;
   quantity: number;
-  onAdd: () => void;
-  onRemove: () => void;
 }
 
-export default function Item({
+function Item({
+  id,
   name,
   picURL,
   price,
-  quantity,
-  onAdd,
-  onRemove
+  quantity
 }: Props) {
+  const { addItem, removeItem } = useFoodBeverageStore();
+
+  const onAdd = () => {
+    addItem({
+      id,
+      name,
+      price,
+      url: picURL,
+      quantity: 1
+    });
+  }
+
+  const onRemove = () => {
+    removeItem(id);
+  }
+
   return (
     <div className="shadow p-4 rounded-lg flex flex-col gap-y-2">
       <img
@@ -52,3 +67,5 @@ export default function Item({
     </div>
   )
 }
+
+export default React.memo(Item)
