@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as OrdersImport } from './routes/orders'
 import { Route as HomeImport } from './routes/home'
+import { Route as FnbImport } from './routes/fnb'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const OrdersRoute = OrdersImport.update({
 const HomeRoute = HomeImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const FnbRoute = FnbImport.update({
+  id: '/fnb',
+  path: '/fnb',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,6 +51,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/fnb': {
+      id: '/fnb'
+      path: '/fnb'
+      fullPath: '/fnb'
+      preLoaderRoute: typeof FnbImport
       parentRoute: typeof rootRoute
     }
     '/home': {
@@ -67,12 +81,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
   '/orders': typeof OrdersRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
   '/orders': typeof OrdersRoute
 }
@@ -80,27 +96,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
   '/orders': typeof OrdersRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/home' | '/orders'
+  fullPaths: '/' | '/fnb' | '/home' | '/orders'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home' | '/orders'
-  id: '__root__' | '/' | '/home' | '/orders'
+  to: '/' | '/fnb' | '/home' | '/orders'
+  id: '__root__' | '/' | '/fnb' | '/home' | '/orders'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FnbRoute: typeof FnbRoute
   HomeRoute: typeof HomeRoute
   OrdersRoute: typeof OrdersRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FnbRoute: FnbRoute,
   HomeRoute: HomeRoute,
   OrdersRoute: OrdersRoute,
 }
@@ -116,12 +135,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/fnb",
         "/home",
         "/orders"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/fnb": {
+      "filePath": "fnb.tsx"
     },
     "/home": {
       "filePath": "home.tsx"

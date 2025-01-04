@@ -10,10 +10,10 @@ export default function Home() {
       <h2 className="text-2xl mt-3">Let us help you enhance your stay!</h2>
 
       <div className="grid grid-cols-2 gap-5 mt-8">
-        <MenuItem label="Food & Beverage" />
-        <MenuItem label="Housekeeping" />
-        <MenuItem label="Maintenance" />
-        <MenuItem label="Laundry" />
+        <MenuItem label="Food & Beverage" targetPath="/fnb" />
+        <MenuItem label="Housekeeping" targetPath="/fnb" />
+        <MenuItem label="Maintenance" targetPath="/fnb" />
+        <MenuItem label="Laundry" targetPath="/fnb" />
       </div>
     </main>
   )
