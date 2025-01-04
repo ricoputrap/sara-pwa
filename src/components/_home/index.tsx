@@ -11,9 +11,9 @@ export default function Home() {
 
       <div className="grid grid-cols-2 gap-5 mt-8">
         <MenuItem label="Food & Beverage" targetPath="/fnb" />
-        <MenuItem label="Housekeeping" targetPath="/fnb" />
-        <MenuItem label="Maintenance" targetPath="/fnb" />
-        <MenuItem label="Laundry" targetPath="/fnb" />
+        <MenuItem label="Housekeeping" targetPath="/housekeeping" />
+        <MenuItem label="Maintenance" targetPath="/maintenance" />
+        <MenuItem label="Laundry" targetPath="/laundry" />
       </div>
     </main>
   )

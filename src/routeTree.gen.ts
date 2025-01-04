@@ -12,6 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as OrdersImport } from './routes/orders'
+import { Route as MaintenanceImport } from './routes/maintenance'
+import { Route as LaundryImport } from './routes/laundry'
+import { Route as HousekeepingImport } from './routes/housekeeping'
 import { Route as HomeImport } from './routes/home'
 import { Route as FnbImport } from './routes/fnb'
 import { Route as IndexImport } from './routes/index'
@@ -21,6 +24,24 @@ import { Route as IndexImport } from './routes/index'
 const OrdersRoute = OrdersImport.update({
   id: '/orders',
   path: '/orders',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MaintenanceRoute = MaintenanceImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LaundryRoute = LaundryImport.update({
+  id: '/laundry',
+  path: '/laundry',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HousekeepingRoute = HousekeepingImport.update({
+  id: '/housekeeping',
+  path: '/housekeeping',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +88,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeImport
       parentRoute: typeof rootRoute
     }
+    '/housekeeping': {
+      id: '/housekeeping'
+      path: '/housekeeping'
+      fullPath: '/housekeeping'
+      preLoaderRoute: typeof HousekeepingImport
+      parentRoute: typeof rootRoute
+    }
+    '/laundry': {
+      id: '/laundry'
+      path: '/laundry'
+      fullPath: '/laundry'
+      preLoaderRoute: typeof LaundryImport
+      parentRoute: typeof rootRoute
+    }
+    '/maintenance': {
+      id: '/maintenance'
+      path: '/maintenance'
+      fullPath: '/maintenance'
+      preLoaderRoute: typeof MaintenanceImport
+      parentRoute: typeof rootRoute
+    }
     '/orders': {
       id: '/orders'
       path: '/orders'
@@ -83,6 +125,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/laundry': typeof LaundryRoute
+  '/maintenance': typeof MaintenanceRoute
   '/orders': typeof OrdersRoute
 }
 
@@ -90,6 +135,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/laundry': typeof LaundryRoute
+  '/maintenance': typeof MaintenanceRoute
   '/orders': typeof OrdersRoute
 }
 
@@ -98,15 +146,40 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/fnb': typeof FnbRoute
   '/home': typeof HomeRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/laundry': typeof LaundryRoute
+  '/maintenance': typeof MaintenanceRoute
   '/orders': typeof OrdersRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/fnb' | '/home' | '/orders'
+  fullPaths:
+    | '/'
+    | '/fnb'
+    | '/home'
+    | '/housekeeping'
+    | '/laundry'
+    | '/maintenance'
+    | '/orders'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/fnb' | '/home' | '/orders'
-  id: '__root__' | '/' | '/fnb' | '/home' | '/orders'
+  to:
+    | '/'
+    | '/fnb'
+    | '/home'
+    | '/housekeeping'
+    | '/laundry'
+    | '/maintenance'
+    | '/orders'
+  id:
+    | '__root__'
+    | '/'
+    | '/fnb'
+    | '/home'
+    | '/housekeeping'
+    | '/laundry'
+    | '/maintenance'
+    | '/orders'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,6 +187,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FnbRoute: typeof FnbRoute
   HomeRoute: typeof HomeRoute
+  HousekeepingRoute: typeof HousekeepingRoute
+  LaundryRoute: typeof LaundryRoute
+  MaintenanceRoute: typeof MaintenanceRoute
   OrdersRoute: typeof OrdersRoute
 }
 
@@ -121,6 +197,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FnbRoute: FnbRoute,
   HomeRoute: HomeRoute,
+  HousekeepingRoute: HousekeepingRoute,
+  LaundryRoute: LaundryRoute,
+  MaintenanceRoute: MaintenanceRoute,
   OrdersRoute: OrdersRoute,
 }
 
@@ -137,6 +216,9 @@ export const routeTree = rootRoute
         "/",
         "/fnb",
         "/home",
+        "/housekeeping",
+        "/laundry",
+        "/maintenance",
         "/orders"
       ]
     },
@@ -148,6 +230,15 @@ export const routeTree = rootRoute
     },
     "/home": {
       "filePath": "home.tsx"
+    },
+    "/housekeeping": {
+      "filePath": "housekeeping.tsx"
+    },
+    "/laundry": {
+      "filePath": "laundry.tsx"
+    },
+    "/maintenance": {
+      "filePath": "maintenance.tsx"
     },
     "/orders": {
       "filePath": "orders.tsx"
