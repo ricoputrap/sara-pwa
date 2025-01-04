@@ -8,7 +8,7 @@ export const Route = createFileRoute('/home')({
 
 function HomePage() {
   return (
-    <BaseLayout title="Home" currentPath='/home'>
+    <BaseLayout currentPath='/home' hideHeader>
       <Home />
     </BaseLayout>
   )
