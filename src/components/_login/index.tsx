@@ -15,7 +15,7 @@ export default function Login() {
 
     setTimeout(() => {
       if (username === "user" && password === "1234") {
-        navigate({ to: "/about" });
+        navigate({ to: "/home" });
       }
 
       setIsLoading(false);
